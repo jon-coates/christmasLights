@@ -155,7 +155,8 @@ body:not(.christmas-enabled) .christmas-element {
     left: -9px;
     height: 28px;
     width: auto;
-    pointer-events: none;
+    pointer-events: auto;
+    cursor: pointer;
     z-index: 2;
     transition: transform 0.3s ease;
 }
@@ -510,6 +511,38 @@ body:not(.christmas-enabled) .hero {
     }
     100% {
         transform: translateX(var(--drift, 0)) translateY(calc(100vh + 10px));
+        opacity: 0;
+    }
+}
+
+/* Sleigh animation */
+.sleigh-zoom {
+    position: fixed;
+    z-index: 10000;
+    pointer-events: none;
+    animation: sleighZoom 3s ease-in-out forwards;
+}
+
+@keyframes sleighZoom {
+    0% {
+        left: calc(100vw + 200px);
+        top: 50%;
+        transform: translateY(-50%) scale(0.3);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        transform: translateY(-50%) scale(1.2);
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        left: -200px;
+        top: 50%;
+        transform: translateY(-50%) scale(0.3);
         opacity: 0;
     }
 }

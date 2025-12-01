@@ -98,16 +98,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Snowflake effect on Christmas hat click (only when Christmas theme is enabled)
+    // Snowflake and sleigh effects on Santa hat click (only when Christmas theme is enabled)
     const logoLink = document.querySelector('.logo-link');
+    const santaHat = document.querySelector('.santa-hat');
     
-    if (logoLink) {
-        logoLink.addEventListener('click', function(event) {
-            // Only trigger snowflake effect if Christmas theme is enabled
-            if (snowflakeEffectEnabled && christmasThemeEnabled) {
-                // Prevent default link behaviour
-                event.preventDefault();
-                triggerSnowflakeEffect();
+    // Click counter for sleigh animation (only shows on 5th click)
+    let santaHatClickCount = 0;
+    
+    // Sleigh zoom and snowflake effect on Santa hat click
+    if (santaHat) {
+        santaHat.addEventListener('click', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            // Only trigger effects if Christmas theme is enabled
+            if (christmasThemeEnabled) {
+                santaHatClickCount++;
+                // Only trigger sleigh on 5th click
+                if (santaHatClickCount === 5) {
+                    triggerSleighZoom();
+                    santaHatClickCount = 0; // Reset counter after sleigh appears
+                }
+                // Always trigger snow on every click
+                if (snowflakeEffectEnabled) {
+                    triggerSnowflakeEffect();
+                }
             }
         });
     }
@@ -161,4 +175,27 @@ function triggerSnowflakeEffect() {
             createSnowflake();
         }, i * 50);
     }
+}
+
+// Trigger sleigh zoom animation
+function triggerSleighZoom() {
+    // Create sleigh image element
+    const sleigh = document.createElement('img');
+    sleigh.src = 'assets/slay.png';
+    sleigh.className = 'sleigh-zoom';
+    sleigh.alt = 'Santa\'s sleigh';
+    
+    // Set initial size
+    sleigh.style.width = '300px';
+    sleigh.style.height = 'auto';
+    
+    // Append to body
+    document.body.appendChild(sleigh);
+    
+    // Remove after animation completes
+    setTimeout(function() {
+        if (sleigh.parentNode) {
+            sleigh.parentNode.removeChild(sleigh);
+        }
+    }, 3000);
 }
