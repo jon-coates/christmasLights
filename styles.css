@@ -90,9 +90,17 @@ body {
     transform: translateX(26px);
 }
 
-/* Hide Christmas elements when theme is disabled */
+/* Hide Christmas elements when theme is disabled with fade transition */
+.christmas-element {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+
 body:not(.christmas-enabled) .christmas-element {
-    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
 }
 
 .navbar {
@@ -138,7 +146,7 @@ body:not(.christmas-enabled) .christmas-element {
 .logo-section {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 0;
     flex-shrink: 0;
 }
 
@@ -308,7 +316,7 @@ body:not(.christmas-enabled) .christmas-element {
 /* Mobile responsive styles */
 @media (max-width: 768px) {
     .navbar {
-        min-height: 60px;
+        min-height: 56px;
     }
 
     .navbar-content {
@@ -317,8 +325,12 @@ body:not(.christmas-enabled) .christmas-element {
         justify-content: flex-start;
     }
 
+    .logo {
+        height: 24px;
+    }
+
     .tagline {
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .nav-links {
@@ -331,7 +343,7 @@ body:not(.christmas-enabled) .christmas-element {
         flex-direction: column;
         align-items: flex-start;
         padding: 16px 24px;
-        gap: 16px;
+        gap: 12px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         z-index: 100;
     }
@@ -348,7 +360,7 @@ body:not(.christmas-enabled) .christmas-element {
     /* Group nav-icons and hamburger-menu together on the right */
     .nav-icons {
         display: flex;
-        gap: 12px;
+        gap: 4px;
         margin-left: auto;
         margin-right: 12px;
     }
@@ -372,6 +384,7 @@ body:not(.christmas-enabled) .christmas-element {
     .hero {
         height: auto;
         min-height: 512px;
+        background-color: #11111A;
     }
 
     .hero-image {
@@ -405,7 +418,11 @@ main {
     justify-content: center;
 }
 
-/* Hide Christmas hero background when theme is disabled */
+/* Hide Christmas hero background when theme is disabled with fade transition */
+.hero {
+    transition: background-image 0.5s ease-in-out, background-color 0.5s ease-in-out;
+}
+
 body:not(.christmas-enabled) .hero {
     background-image: none;
     background-color: #11111a;
