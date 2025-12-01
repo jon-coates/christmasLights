@@ -126,7 +126,7 @@ body:not(.christmas-enabled) .christmas-element {
     max-width: 1400px;
     margin: 0 auto;
     padding: 16px 24px;
-    gap: 32px;
+    gap: 40px;
 }
 
 /* Logo section */
@@ -191,10 +191,10 @@ body:not(.christmas-enabled) .christmas-element {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 24px;
-    align-items: center;
+    gap: 40px;
+    align-items: left;
     flex: 1;
-    justify-content: center;
+    justify-content: left;
 }
 
 .nav-link {
