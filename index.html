@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarExpert - Australia's BIGGEST New Car Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Testing bar for Christmas theme toggle -->
+    <div class="testing-bar">
+        <div class="testing-bar-content">
+            <span class="testing-bar-label">Testing Mode</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="christmas-theme-toggle" checked>
+                <span class="toggle-slider"></span>
+            </label>
+            <span class="toggle-label" id="toggle-status">Christmas Theme: ON</span>
+        </div>
+    </div>
+    <nav class="navbar">
+        <!-- Christmas lights positioned behind content -->
+        <div class="lights-container christmas-element">
+            <svg xmlns="http://www.w3.org/2000/svg" width="92" height="20" fill="none" viewBox="0 0 92 20" class="lights-svg">
+                <g class="lights">
+                    <g class="light1">
+                        <path fill="#3A3838" d="m10.848 9.151 1.795.523.686-2.151L11.534 7l-.686 2.151Z" class="base"/>
+                        <path fill="#E0302E" d="m12.644 9.673-1.795-.523c-.504.462-1.023 1.093-1.272 1.873-.568 1.78.486 3.665.486 3.665s1.974-1.002 2.543-2.784c.249-.78.186-1.58.038-2.232Z" class="bulbVector bulb1"/>
+                    </g>
+                    <g class="light2">
+                        <path fill="#3A3838" d="m88.58 6.89 1.83-.403-.53-2.191-1.828.403.529 2.191Z" class="base"/>
+                        <path fill="#E0302E" d="m90.408 6.484-1.828.403c-.195.641-.315 1.435-.123 2.23.438 1.813 2.336 2.944 2.336 2.944s1.187-1.81.75-3.625c-.192-.794-.664-1.457-1.134-1.952Z" class="bulb2"/>
+                    </g>
+                    <g class="light1">
+                        <path fill="#3A3838" d="m73.78 10.357 1.831-.394-.517-2.194-1.83.394.516 2.194Z" class="base"/>
+                        <path fill="#E0302E" d="m75.611 9.965-1.83.394c-.199.64-.323 1.433-.135 2.229.428 1.817 2.32 2.957 2.32 2.957s1.197-1.805.769-3.622c-.188-.795-.656-1.46-1.123-1.958Z" class="bulbVector bulb1"/>
+                    </g>
+                    <g class="light2">
+                        <path fill="#3A3838" d="m57.676 13.615 1.852-.29-.38-2.219-1.852.29.38 2.219Z" class="base"/>
+                        <path fill="#E0302E" d="m59.528 13.322-1.852.29c-.238.627-.411 1.412-.273 2.217.314 1.837 2.131 3.083 2.131 3.083s1.308-1.734.993-3.571c-.138-.805-.564-1.496-.999-2.019Z" class="bulb2"/>
+                    </g>
+                    <g class="light1">
+                        <path fill="#3A3838" d="M42.723 14.483H44.6v-2.249h-1.877v2.249Z" class="base"/>
+                        <path fill="#E0302E" d="M44.6 14.483h-1.877c-.341.583-.645 1.33-.645 2.146 0 1.862 1.583 3.371 1.583 3.371s1.583-1.51 1.583-3.371c0-.816-.303-1.563-.645-2.146Z" class="bulb1"/>
+                    </g>
+                    <g class="light2">
+                        <path fill="#3A3838" d="m25.887 12.993 1.847.316.414-2.214-1.847-.316-.414 2.214Z" class="base"/>
+                        <path fill="#E0302E" d="m27.735 13.307-1.846-.315c-.444.516-.88 1.201-1.03 2.004-.343 1.833.937 3.585.937 3.585s1.836-1.22 2.18-3.053c.15-.803-.011-1.59-.24-2.221Z" class="bulb2"/>
+                    </g>
+                    <path fill="#3A3838" d="M.076 3.216c18.03 5.772 30.06 8.759 43.041 8.814 12.985.056 26.939-2.822 48.817-8.817L92 3.194v.519c-21.844 5.984-35.84 8.873-48.886 8.817C30.071 12.474 17.996 9.474 0 3.716V3.19l.076.025Z" class="string"/>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Navbar content -->
+        <div class="navbar-content">
+            <div class="logo-section">
+                <a href="/" class="logo-link">
+                    <img src="assets/brand-logo.svg" alt="CarExpert" class="logo">
+                    <img src="assets/santaHat.png" alt="" class="santa-hat christmas-element" aria-hidden="true">
+                </a>
+                <p class="tagline">Australia's BIGGEST New Car Website</p>
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link has-dropdown">News <span class="chevron">▼</span></a></li>
+                <li><a href="#" class="nav-link has-dropdown">Reviews <span class="chevron">▼</span></a></li>
+                <li><a href="#" class="nav-link has-dropdown">Research <span class="chevron">▼</span></a></li>
+                <li><a href="#" class="nav-link">Buy</a></li>
+                <li><a href="#" class="nav-link">Sell</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <button class="icon-button" aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+                        <path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <button class="icon-button" aria-label="User account">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
+                        <path d="M6 21c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </button>
+            </div>
+
+            <button class="hamburger-menu" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    <main>
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-card">
+                    <div class="hero-image">
+                        <!-- Full bleed image placeholder -->
+                    </div>
+                    <div class="hero-content">
+                        <h2 class="hero-title">Ford Mustang GT Fastback review</h2>
+                        <p class="hero-excerpt">The new Ford Mustang GT still packs a howling V8 and can still be had with a manual, though its high-tech interior no longer feels retro.</p>
+                        <div class="hero-meta">
+                            <span class="hero-author">Author Name</span>
+                            <span class="hero-time">2 hours ago</span>
+                        </div>
+                        <div class="hero-comments">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>15</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,515 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Testing bar */
+.testing-bar {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #dddddd;
+    padding: 8px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.testing-bar-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.testing-bar-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #666666;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #cccccc;
+    transition: 0.3s;
+    border-radius: 24px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background-color: #EB0800;
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+    transform: translateX(26px);
+}
+
+.toggle-label {
+    font-size: 13px;
+    color: #333333;
+    font-weight: 500;
+}
+
+/* Hide Christmas elements when theme is disabled */
+body:not(.christmas-enabled) .christmas-element {
+    display: none !important;
+}
+
+.navbar {
+    width: 100%;
+    background-color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    min-height: 80px;
+    border-bottom: 1px solid #dddddd;
+}
+
+/* Christmas lights positioned behind content */
+.lights-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.lights-svg {
+    flex-shrink: 0;
+    display: block;
+}
+
+/* Navbar content - positioned above lights */
+.navbar-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    gap: 32px;
+}
+
+/* Logo section */
+.logo-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.logo-link {
+    display: inline-block;
+    line-height: 0;
+    position: relative;
+}
+
+.logo {
+    height: 30px;
+    width: auto;
+    display: block;
+}
+
+.santa-hat {
+    position: absolute;
+    top: -10px;
+    left: -9px;
+    height: 28px;
+    width: auto;
+    pointer-events: none;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.logo-link:hover .santa-hat {
+    animation: hatWiggle 0.3s ease-in-out;
+}
+
+@keyframes hatWiggle {
+    0%, 100% {
+        transform: rotate(0deg) translateY(0);
+    }
+    25% {
+        transform: rotate(-8deg) translateY(-2px);
+    }
+    50% {
+        transform: rotate(8deg) translateY(-4px);
+    }
+    75% {
+        transform: rotate(-4deg) translateY(-2px);
+    }
+}
+
+.tagline {
+    font-size: 11px;
+    color: #666666;
+    line-height: 1.2;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* Navigation links */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 24px;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #11111A;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: #EB0800;
+}
+
+.chevron {
+    font-size: 10px;
+    color: #666666;
+    transition: transform 0.2s;
+}
+
+.has-dropdown:hover .chevron {
+    transform: translateY(2px);
+}
+
+/* Navigation icons */
+.nav-icons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #11111A;
+    transition: color 0.2s;
+}
+
+.icon-button:hover {
+    color: #EB0800;
+}
+
+.icon-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Hamburger menu (hidden on desktop) */
+.hamburger-menu {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 10;
+}
+
+.hamburger-menu span {
+    width: 24px;
+    height: 2px;
+    background-color: #11111A;
+    transition: all 0.3s;
+}
+
+/* Simple alternating opacity animation for lights */
+.bulb1 {
+    animation: fade1 1.5s ease-in-out infinite;
+}
+
+.bulb2 {
+    animation: fade2 1.5s ease-in-out infinite;
+}
+
+/* Keyframe animation for bulb1 - alternates opacity */
+@keyframes fade1 {
+    0%, 100% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Keyframe animation for bulb2 - alternates opacity, offset by 50% */
+@keyframes fade2 {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+    .navbar {
+        min-height: 60px;
+    }
+
+    .navbar-content {
+        padding: 8px 16px;
+        gap: 12px;
+    }
+
+    .tagline {
+        font-size: 10px;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #ffffff;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 24px;
+        gap: 16px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 8px 0;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .nav-icons {
+        display: none;
+    }
+
+    .hero-container {
+        padding: 16px;
+        height: auto;
+        align-items: flex-start;
+    }
+
+    .hero-card {
+        flex-direction: column;
+        margin: 0;
+        height: auto;
+    }
+
+    .hero {
+        height: auto;
+        min-height: 512px;
+    }
+
+    .hero-image {
+        flex: 0 0 auto;
+        width: 100%;
+        aspect-ratio: 3 / 2;
+        min-width: 0;
+    }
+
+    .hero-content {
+        flex: 0 0 auto;
+        width: 100%;
+        padding: 24px !important;
+        min-width: 0;
+        justify-content: flex-start;
+    }
+}
+
+main {
+    padding: 0;
+}
+
+.hero {
+    height: 512px;
+    background-image: url('assets/heroBG.png');
+    background-size: 256px auto;
+    background-repeat: repeat;
+    background-position: 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hide Christmas hero background when theme is disabled */
+body:not(.christmas-enabled) .hero {
+    background-image: none;
+    background-color: #11111a;
+}
+
+.hero-container {
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.hero-card {
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    margin: 24px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.hero-image {
+    flex: 1 1 50%;
+    min-width: 0;
+    background-color: #f0f0f0;
+    background-image: url('https://images.unsplash.com/photo-1611016186353-9af58c69a533?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    flex: 1 1 50%;
+    min-width: 0;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+}
+
+.hero-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #11111A;
+    line-height: 1.3;
+    margin: 0;
+}
+
+.hero-excerpt {
+    font-size: 1rem;
+    color: #666666;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.hero-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 0.875rem;
+    color: #666666;
+}
+
+.hero-author {
+    font-weight: 500;
+}
+
+.hero-time {
+    color: #999999;
+}
+
+.hero-comments {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.875rem;
+    color: #666666;
+}
+
+.hero-comments svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    fill: none;
+}
+
+/* Snowflake effect */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: snowfall linear forwards;
+    opacity: 0;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translateX(0) translateY(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateX(var(--drift, 0)) translateY(calc(100vh + 10px));
+        opacity: 0;
+    }
+}
