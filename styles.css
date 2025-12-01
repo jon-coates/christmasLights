@@ -10,28 +10,39 @@ body {
     color: #000000;
 }
 
-/* Testing bar */
-.testing-bar {
-    background-color: #f5f5f5;
-    border-bottom: 1px solid #dddddd;
-    padding: 8px 16px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+/* User menu */
+.user-menu-container {
+    position: relative;
 }
 
-.testing-bar-content {
-    max-width: 1400px;
-    margin: 0 auto;
+.user-menu {
+    position: fixed;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 200px;
+    max-width: calc(100vw - 32px);
+    padding: 12px;
+    display: none;
+    z-index: 10000;
+}
+
+.user-menu.active {
+    display: block;
+}
+
+.user-menu-item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 12px;
 }
 
-.testing-bar-label {
-    font-size: 13px;
-    font-weight: 600;
-    color: #666666;
+.user-menu-label {
+    font-size: 14px;
+    color: #333333;
+    font-weight: 500;
 }
 
 .toggle-switch {
@@ -72,17 +83,11 @@ body {
 }
 
 .toggle-switch input:checked + .toggle-slider {
-    background-color: #EB0800;
+    background-color: #22c55e;
 }
 
 .toggle-switch input:checked + .toggle-slider:before {
     transform: translateX(26px);
-}
-
-.toggle-label {
-    font-size: 13px;
-    color: #333333;
-    font-weight: 500;
 }
 
 /* Hide Christmas elements when theme is disabled */
@@ -308,7 +313,8 @@ body:not(.christmas-enabled) .christmas-element {
 
     .navbar-content {
         padding: 8px 16px;
-        gap: 12px;
+        gap: 0;
+        justify-content: flex-start;
     }
 
     .tagline {
@@ -339,12 +345,16 @@ body:not(.christmas-enabled) .christmas-element {
         padding: 8px 0;
     }
 
-    .hamburger-menu {
+    /* Group nav-icons and hamburger-menu together on the right */
+    .nav-icons {
         display: flex;
+        gap: 12px;
+        margin-left: auto;
+        margin-right: 12px;
     }
 
-    .nav-icons {
-        display: none;
+    .hamburger-menu {
+        display: flex;
     }
 
     .hero-container {

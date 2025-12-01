@@ -11,17 +11,6 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- Testing bar for Christmas theme toggle -->
-    <div class="testing-bar">
-        <div class="testing-bar-content">
-            <span class="testing-bar-label">Testing Mode</span>
-            <label class="toggle-switch">
-                <input type="checkbox" id="christmas-theme-toggle" checked>
-                <span class="toggle-slider"></span>
-            </label>
-            <span class="toggle-label" id="toggle-status">Christmas Theme: ON</span>
-        </div>
-    </div>
     <nav class="navbar">
         <!-- Christmas lights positioned behind content -->
         <div class="lights-container christmas-element">
@@ -81,12 +70,23 @@
                         <path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </button>
-                <button class="icon-button" aria-label="User account">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
-                        <path d="M6 21c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="2"/>
-                    </svg>
-                </button>
+                <div class="user-menu-container">
+                    <button class="icon-button user-button" aria-label="User account" id="user-menu-button">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M6 21c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </button>
+                    <div class="user-menu" id="user-menu">
+                        <div class="user-menu-item">
+                            <span class="user-menu-label">Grinch Mode</span>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="grinch-mode-toggle">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <button class="hamburger-menu" aria-label="Toggle menu">

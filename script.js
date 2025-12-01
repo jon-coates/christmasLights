@@ -13,13 +13,6 @@ function updateChristmasTheme(enabled) {
     }
 }
 
-// Update toggle status text
-function updateToggleStatus(element, enabled) {
-    if (element) {
-        element.textContent = `Christmas Theme: ${enabled ? 'ON' : 'OFF'}`;
-    }
-}
-
 // Clone the SVG pattern to fill the navbar width
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize Christmas theme from localStorage
@@ -28,21 +21,79 @@ document.addEventListener('DOMContentLoaded', function() {
         christmasThemeEnabled = savedPreference === 'true';
     }
     
-    // Set initial state
-    const toggle = document.getElementById('christmas-theme-toggle');
-    const toggleStatus = document.getElementById('toggle-status');
+    // Set initial state for grinch mode toggle (inverse of Christmas theme)
+    const grinchModeToggle = document.getElementById('grinch-mode-toggle');
     
-    if (toggle) {
-        toggle.checked = christmasThemeEnabled;
+    if (grinchModeToggle) {
+        // Grinch mode is ON when Christmas theme is OFF
+        grinchModeToggle.checked = !christmasThemeEnabled;
         updateChristmasTheme(christmasThemeEnabled);
-        updateToggleStatus(toggleStatus, christmasThemeEnabled);
         
-        // Add event listener for toggle
-        toggle.addEventListener('change', function() {
-            christmasThemeEnabled = toggle.checked;
+        // Add event listener for grinch mode toggle
+        grinchModeToggle.addEventListener('change', function() {
+            // Grinch mode ON = Christmas theme OFF
+            christmasThemeEnabled = !grinchModeToggle.checked;
             updateChristmasTheme(christmasThemeEnabled);
-            updateToggleStatus(toggleStatus, christmasThemeEnabled);
             localStorage.setItem('christmasThemeEnabled', christmasThemeEnabled.toString());
+        });
+    }
+    
+    // User menu toggle
+    const userMenuButton = document.getElementById('user-menu-button');
+    const userMenu = document.getElementById('user-menu');
+    
+    if (userMenuButton && userMenu) {
+        // Function to position the menu
+        function positionMenu() {
+            if (userMenu.classList.contains('active')) {
+                const buttonRect = userMenuButton.getBoundingClientRect();
+                userMenu.style.top = (buttonRect.bottom + 8) + 'px';
+                
+                // Calculate right position to align with button's right edge
+                const rightPosition = window.innerWidth - buttonRect.right;
+                
+                // Ensure menu doesn't go off the right edge (minimum 16px padding)
+                if (rightPosition < 16) {
+                    userMenu.style.right = '16px';
+                } else {
+                    userMenu.style.right = rightPosition + 'px';
+                }
+                userMenu.style.left = 'auto';
+            }
+        }
+        
+        userMenuButton.addEventListener('click', function(event) {
+            event.stopPropagation();
+            const wasActive = userMenu.classList.contains('active');
+            userMenu.classList.toggle('active');
+            
+            if (userMenu.classList.contains('active')) {
+                // Menu is now open, position it
+                positionMenu();
+            }
+            // If it was active and now it's not, the toggle closed it (no action needed)
+        });
+        
+        // Reposition on scroll or resize (only when menu is open)
+        window.addEventListener('scroll', function() {
+            if (userMenu.classList.contains('active')) {
+                positionMenu();
+            }
+        });
+        window.addEventListener('resize', function() {
+            if (userMenu.classList.contains('active')) {
+                positionMenu();
+            }
+        });
+        
+        // Close menu when clicking outside (but not when clicking the button itself)
+        document.addEventListener('click', function(event) {
+            const isClickInsideMenu = userMenu.contains(event.target);
+            const isClickOnButton = userMenuButton.contains(event.target);
+            
+            if (!isClickInsideMenu && !isClickOnButton && userMenu.classList.contains('active')) {
+                userMenu.classList.remove('active');
+            }
         });
     }
     
